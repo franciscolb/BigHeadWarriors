@@ -13,6 +13,7 @@ public class FirebaseAuthenticationScript : MonoBehaviour {
     private bool signed = false;
     private bool loginError = false;
     private bool signUpError = false;
+    public static string uid;
 
     public void buttonClickLogin()
     {
@@ -37,7 +38,7 @@ public class FirebaseAuthenticationScript : MonoBehaviour {
             FirebaseUser user = task.Result;
             Debug.LogFormat("User signed in successfully: {0} ({1})",
                 user.DisplayName, user.UserId);
-
+            uid = user.UserId;
             //SceneManager.LoadScene("LoginResults");
             this.signed = true;
         });
